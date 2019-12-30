@@ -1,14 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Calculator
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <ion-item >
+    <ion-textarea text-end style="font-size: 32px;" class="input-textarea" [innerHTML]="value">
+    </ion-textarea>
+  </ion-item>
+  <div text-center>
+    <div class="upper-div">
+<!--      <ion-button size="small" class="mod-button" (click)="onButtonPress('%')">%</ion-button>-->
+      <ion-button size="small" class="cut-button" (click)="onButtonPress('c')">C</ion-button>
+      <ion-button size="small" class="back-space" (click)="onButtonPress('x')">x</ion-button>
+<!--      <ion-button size="large"  (click)="onButtonPress('%')">%</ion-button>-->
+<!--      <ion-button size="large"  (click)="onButtonPress('c')">C</ion-button>-->
+<!--      <ion-button size="large"  (click)="onButtonPress('x')">x</ion-button>-->
+    </div>
+    <div *ngFor="let numberGroup of numberGroups">
+      <ion-button *ngFor="let number of numberGroup" (click)="onButtonPress(number)" class="cal-button" [innerHTML]="number"></ion-button>
+    </div>
+    <div>
+      <ion-button class="equal-button" (click)="onButtonPress('=')">=</ion-button>
+    </div>
   </div>
+
 </ion-content>
